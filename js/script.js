@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
+    // Mobile menu toggle with animation
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
     
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
             nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
     }
     
@@ -16,8 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             if (nav.classList.contains('active')) {
                 nav.classList.remove('active');
+                menuToggle.classList.remove('active');
             }
         });
+    });
+    
+    // Add scrolled class to navbar on scroll
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     });
     
     // Smooth scrolling for anchor links
